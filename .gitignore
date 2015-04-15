@@ -1,5 +1,3 @@
-!/bundle
-/bundle/*
-!/bundle/vundle
+bundle
 fswap
 temp_dirs
