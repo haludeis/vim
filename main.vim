@@ -359,8 +359,8 @@ map <C-v> "+gP
 "                  Themes                                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if has("gui_running")
     set t_Co=256
+if has("gui_running")
     "set bg=dark
     set listchars=tab:>-,trail:- " highlight tabs and trailing spaces
     set list
@@ -368,8 +368,9 @@ if has("gui_running")
 "    colorscheme blackboard
     "colorscheme asmanian_blood
     "colorscheme solarized
-    colorscheme jellybeans
+    "colorscheme jellybeans
     "colorscheme twilight
+    colorscheme molokai
     "colorscheme fu
     "colorscheme desert
     "colorscheme 256-jungle
@@ -377,7 +378,8 @@ if has("gui_running")
     "colorscheme slate
 else
     "colorscheme desert
-    colorscheme 256-jungle
+    colorscheme molokai
+    "colorscheme 256-jungle
     "colorscheme asmanian2
 endif
 
