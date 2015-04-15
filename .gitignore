@@ -1,4 +1,5 @@
-bundle
+!/bundle
+/bundle/*
+!/bundle/vundle
 fswap
 temp_dirs
-vundle
