@@ -151,34 +151,34 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" My Bundles here:
+" My Plugins here:
 "
 " original repos on github
-Bundle 'Shougo/neocomplcache'
-"Bundle 'Shougo/neocomplete' " vim with lua
+Plugin 'Shougo/neocomplcache'
+"Plugin 'Shougo/neocomplete' " vim with lua
 
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle 'spf13/vim-autoclose'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'spf13/vim-autoclose'
 let g:autoclose_vim_commentmode = 1
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/a.vim'
-"Bundle 'rhysd/vim-clang-format'
-Bundle 'noah/vim256-color'
-"Bundle 'scrooloose/syntastic'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'scrooloose/nerdcommenter'
-"Bundle 'tpope/vim-sensible'
-Bundle 'luochen1990/rainbow'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'honza/vim-snippets'
-Bundle 'othree/html5.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/a.vim'
+"Plugin 'rhysd/vim-clang-format'
+Plugin 'noah/vim256-color'
+"Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'scrooloose/nerdcommenter'
+"Plugin 'tpope/vim-sensible'
+Plugin 'luochen1990/rainbow'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'honza/vim-snippets'
+Plugin 'othree/html5.vim'
 
 "Rainbow
 
@@ -382,5 +382,5 @@ else
 endif
 
 
-map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; gksu -u code surf "file:///tmp/apercu.html" <CR>
+map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; surf "file:///tmp/apercu.html" <CR>
 
