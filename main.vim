@@ -1,22 +1,25 @@
 set exrc
 
-" Use spaces instead of tabs
-set expandtab
 "
 " " Be smart when using tabs ;)
 set smarttab
-"
-"
+
+" Use spaces instead of tabs
+"set expandtab
+"nb space for tab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set noexpandtab 
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
-
 set secure
 set colorcolumn=80
 
 " Show line number
 set nu
-"
+
 " " Enable syntax highlighting
 syntax enable
 "
@@ -37,11 +40,11 @@ set nohls
 set cursorline
 
 let &path.="src/include,"
-set cino=g1s,h1s,f0,p0,t0,+0,(0,^-2,
-
+set cino=g1s,h1s,f0,p0,t0,+0,(0,
 "set cino=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+0,(0,u0,w1,m1 
-set shiftwidth=4
-set tabstop=4
+
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                Fichier swap                                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -179,7 +182,7 @@ Plugin 'luochen1990/rainbow'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'honza/vim-snippets'
 Plugin 'othree/html5.vim'
-
+Plugin 'klen/python-mode'
 "Rainbow
 
 "let g:rainbow_active = 1
@@ -231,9 +234,9 @@ filetype plugin indent on    " required
 
 """Neosnippet
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
@@ -343,27 +346,32 @@ let g:neocomplcache_force_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "                  Raccourci                                                "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sélectionner tout
-map <C-a> ggVG
+map <Leader>a ggVG
 
 " Copier
-map <C-c> "+y
+map <Leader>c "+y
 
 " Couper
-map <C-x> "+x
+map <Leader>x "+x
 
 " Coller
-map <C-v> "+gP
+map <Leader>v "+gP
+
+
+map <Leader>t :set list <CR>
+map <Leader>nt :set list! <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                  Themes                                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-    set t_Co=256
+
+set t_Co=256
 if has("gui_running")
     "set bg=dark
     set listchars=tab:>-,trail:- " highlight tabs and trailing spaces
-    set list
+    "set list
 
 "    colorscheme blackboard
     "colorscheme asmanian_blood
@@ -383,6 +391,45 @@ else
     "colorscheme asmanian2
 endif
 
-
 map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; surf "file:///tmp/apercu.html" <CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                charge les fichiers des fonctions                          "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"so ~/.vim/funcs/funcs_run.vim
+
+" Fonctions pour fichiers LaTeX
+"au BufEnter,BufNewFile *.tex    exe Flatex()
+
+" Fonctions pour fichiers c++
+"au BufEnter,BufNewFile *.cpp    exe Fcpp()
+"au BufNewFile *.cpp 0r ~/.vim/template/cpp/source_cpp
+"au BufEnter,BufNewFile *.hpp    exe Fcpp()
+"au BufNewFile *.hpp 0r ~/.vim/template/cpp/header_cpp
+
+
+" éviter de colorer pour le plaintex
+au BufEnter,BufNewFile *.tex  setfiletype tex
+
+" Autre astuce possible, plus propre car dans la doc de Vim
+"let g:tex_flavor = "latex"
+
+" Fonctions pour fichiers HTML
+"au BufEnter *.html exe Fhtml()
+"au BufEnter *.htm exe Fhtml()
+
+" Fonctions pour fichiers CSS
+"au BufEnter *.php exe Fhtml()
+
+" Fonctions pour fichiers txt
+"au BufEnter,BufNewFile *.txt exe Ftxt()
+
+" Fonctions pour fichiers python
+"au BufEnter,BufNewFile python exe Fpython()
+
+au BufNewFile,BufRead *.html exe Fhtml()
+
+" Fonctions pour fichiers django
+autocmd FileType htmldjango exe Fdjango()
 
