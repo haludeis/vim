@@ -1,3 +1,6 @@
+" File ~/.vim/main.vim
+" Global settings for all files (but may be overridden in ftplugin).
+
 set exrc
 
 "
@@ -67,10 +70,10 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 
 " " Returns true if paste mode is enabled
 function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
+	if &paste
+		return 'PASTE MODE  '
+	en
+	return ''
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -78,8 +81,8 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 augroup project
-    autocmd!
-    autocmd BufRead,BufNewFile *.hpp,*.cpp,*tpp set filetype=cpp.doxygen
+	autocmd!
+	autocmd BufRead,BufNewFile *.hpp,*.cpp,*tpp set filetype=cpp.doxygen
 augroup END
 
 
@@ -187,27 +190,27 @@ Plugin 'klen/python-mode'
 
 "let g:rainbow_active = 1
 let g:rainbow_conf = {
-    \   'guifgs': ['royalblue3', 'darkorange3', 'darkorchid3', 'seagreen3'],
-    \   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-    \   'operators': '_::_' ,  
-    \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-    \   'separately': {
-    \       '*': {},
-    \       'tex': {
-    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-    \       },
-    \       'lisp': {
-    \           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-    \       },
-    \       'vim': {
-    \           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-    \       },
-    \       'html': {
-    \           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-    \       },
-    \       'css': 0,
-    \   }
-    \}
+			\   'guifgs': ['royalblue3', 'darkorange3', 'darkorchid3', 'seagreen3'],
+			\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+			\   'operators': '_::_' ,  
+			\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+			\   'separately': {
+			\       '*': {},
+			\       'tex': {
+			\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+			\       },
+			\       'lisp': {
+			\           'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+			\       },
+			\       'vim': {
+			\           'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+			\       },
+			\       'html': {
+			\           'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+			\       },
+			\       'css': 0,
+			\   }
+			\}
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -240,15 +243,15 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: pumvisible() ? "\<C-n>" : "\<TAB>"
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: pumvisible() ? "\<C-n>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)"
-\: "\<TAB>"
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2 concealcursor=i
+	set conceallevel=2 concealcursor=i
 endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
@@ -288,14 +291,14 @@ let g:neocomplcache_enable_underbar_completion = 1
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-            \ 'default' : '',
-            \ 'vimshell' : $HOME.'/.vimshell_hist',
-            \ 'scheme' : $HOME.'/.gosh_completions'
-            \ }
+			\ 'default' : '',
+			\ 'vimshell' : $HOME.'/.vimshell_hist',
+			\ 'scheme' : $HOME.'/.gosh_completions'
+			\ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
+	let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
@@ -307,9 +310,9 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return neocomplcache#smart_close_popup() . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+	return neocomplcache#smart_close_popup() . "\<CR>"
+	" For no inserting <CR> key.
+	"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -333,7 +336,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_force_omni_patterns')
-    let g:neocomplcache_force_omni_patterns = {}
+	let g:neocomplcache_force_omni_patterns = {}
 endif
 let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -369,67 +372,27 @@ map <Leader>nt :set list! <CR>
 
 set t_Co=256
 if has("gui_running")
-    "set bg=dark
-    set listchars=tab:>-,trail:- " highlight tabs and trailing spaces
-    "set list
+	"set bg=dark
+	set listchars=tab:>-,trail:- " highlight tabs and trailing spaces
+	"set list
 
-"    colorscheme blackboard
-    "colorscheme asmanian_blood
-    "colorscheme solarized
-    "colorscheme jellybeans
-    "colorscheme twilight
-    colorscheme molokai
-    "colorscheme fu
-    "colorscheme desert
-    "colorscheme 256-jungle
-    "colorscheme asmanian2
-    "colorscheme slate
+	"    colorscheme blackboard
+	"colorscheme asmanian_blood
+	"colorscheme solarized
+	"colorscheme jellybeans
+	"colorscheme twilight
+	colorscheme molokai
+	"colorscheme fu
+	"colorscheme desert
+	"colorscheme 256-jungle
+	"colorscheme asmanian2
+	"colorscheme slate
 else
-    "colorscheme desert
-    colorscheme molokai
-    "colorscheme 256-jungle
-    "colorscheme asmanian2
+	"colorscheme desert
+	colorscheme molokai
+	"colorscheme 256-jungle
+	"colorscheme asmanian2
 endif
 
 map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; surf "file:///tmp/apercu.html" <CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                charge les fichiers des fonctions                          "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"so ~/.vim/funcs/funcs_run.vim
-
-" Fonctions pour fichiers LaTeX
-"au BufEnter,BufNewFile *.tex    exe Flatex()
-
-" Fonctions pour fichiers c++
-"au BufEnter,BufNewFile *.cpp    exe Fcpp()
-"au BufNewFile *.cpp 0r ~/.vim/template/cpp/source_cpp
-"au BufEnter,BufNewFile *.hpp    exe Fcpp()
-"au BufNewFile *.hpp 0r ~/.vim/template/cpp/header_cpp
-
-
-" éviter de colorer pour le plaintex
-au BufEnter,BufNewFile *.tex  setfiletype tex
-
-" Autre astuce possible, plus propre car dans la doc de Vim
-"let g:tex_flavor = "latex"
-
-" Fonctions pour fichiers HTML
-"au BufEnter *.html exe Fhtml()
-"au BufEnter *.htm exe Fhtml()
-
-" Fonctions pour fichiers CSS
-"au BufEnter *.php exe Fhtml()
-
-" Fonctions pour fichiers txt
-"au BufEnter,BufNewFile *.txt exe Ftxt()
-
-" Fonctions pour fichiers python
-"au BufEnter,BufNewFile python exe Fpython()
-
-au BufNewFile,BufRead *.html exe Fhtml()
-
-" Fonctions pour fichiers django
-autocmd FileType htmldjango exe Fdjango()
 

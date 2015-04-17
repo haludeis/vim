@@ -1,4 +1,5 @@
-function Fdjango()
+" File ~/.vim/ftplugin/htmldjango.vim
+" Django specific settings.
 
     if has("gui_running")
         " Dossier du fichier comme dossier de travail de gVim
@@ -21,5 +22,4 @@ function Fdjango()
     "set dict+=~/.vim/dico/qt
     "UltiSnipsAddFileTypes cpp
     "UltiSnipsAddFiletypes qt
-endfunction
 
