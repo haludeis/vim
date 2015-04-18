@@ -1,6 +1,6 @@
 " File ~/.vim/main.vim
 " Global settings for all files (but may be overridden in ftplugin).
-
+let mapleader = ","
 set exrc
 
 "
@@ -174,6 +174,8 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'spf13/vim-autoclose'
 let g:autoclose_vim_commentmode = 1
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+
 Plugin 'vim-scripts/a.vim'
 "Plugin 'rhysd/vim-clang-format'
 Plugin 'noah/vim256-color'
@@ -186,6 +188,31 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'honza/vim-snippets'
 Plugin 'othree/html5.vim'
 Plugin 'klen/python-mode'
+" Permet le déplacement rapide dans le code
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'aperezdc/vim-template'
+Plugin 'amiorin/vim-project'
+
+
+" Gif config
+" EasyMotion
+"let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Bi-directional find motion
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-s)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-s2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 "Rainbow
 
 "let g:rainbow_active = 1
@@ -395,4 +422,27 @@ else
 endif
 
 map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; surf "file:///tmp/apercu.html" <CR>
+" Git raccourci
+map <Leader>gs :Gstatus <CR>
+map <Leader>gpu :Gpush<CR>
+map <Leader>gpl :Gpull<CR>
+:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" vim-project
+let g:project_use_nerdtree = 1
+set rtp+=~/.vim/bundle/vim-project/
+call project#rc("/home/data/git/")
+
+Project  'bitbucket/blocnote'					, 'blocnote'	
+File     'bitbucket/blocnote/session.vim'       , 'session'
+Callback 'session'                              , 'Opensession'
+
+function! Opensession(...) abort
+  so /home/data/git/bitbucket/blocnote/session.vim
+endfunction
+
+Project  'bitbucket/doc'
+"File     'bitbucket/doc/article-site/vim.html'            , 'vim'
+
+Project  '~/.vim/'            , 'vimrc'
 
