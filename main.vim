@@ -114,27 +114,7 @@ map <silent> <F3> ggVG=<CR>
 map <silent> <F4> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 imap <silent> <F4> <ESC>:if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
-" F5
-" Compile
-nnoremap <F5> :make<cr>
-set makeprg=make\ -C\ /home/code/git/dbtx-code/build\ -j2
 
-" F6
-" lance le prog
-nnoremap <F6> :!/home/code/git/sekhmet/bin/Debug/sekhmet_0.1.1d.bin --gui<cr>
-
-" F7
-" switch header cpp
-nnoremap <F7> :A<cr>
-
-" F8
-" affiche/enleve le menu des classes
-nnoremap <silent> <F8> :TlistToggle<CR>
-"nnoremap <silent> <F8> :TagbarToggle<CR>
-
-" F9
-" affiche/enleve les parentese couleur
-nnoremap <silent> <F9> :RainbowToggle<CR>
 
 
 
@@ -145,10 +125,20 @@ nnoremap <silent> <F11> :NERDTreeToggle<CR>
 
 " " F12
 nmap <F12> :BufExplorer<CR>
-
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                  Touches Leader                                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" git
+nmap <leader>gs :Gstatus<CR>
+map <Leader>gp  :Gpush<CR>
+map <Leader>gr  :Gpull<CR>
+"split
+map <Leader>sv  :vsp<CR>
+map <Leader>sh  :split<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                  Pluggins                                                 "
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle setup
 " required!
@@ -178,13 +168,11 @@ Plugin 'gregsexton/gitv'
 
 Plugin 'vim-scripts/a.vim'
 "Plugin 'rhysd/vim-clang-format'
-Plugin 'noah/vim256-color'
 "Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'scrooloose/nerdcommenter'
 "Plugin 'tpope/vim-sensible'
 Plugin 'luochen1990/rainbow'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'honza/vim-snippets'
 Plugin 'othree/html5.vim'
 Plugin 'klen/python-mode'
@@ -192,6 +180,9 @@ Plugin 'klen/python-mode'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'aperezdc/vim-template'
 Plugin 'amiorin/vim-project'
+
+" Themes
+Plugin 'noah/vim256-color'
 
 
 " Gif config
@@ -389,7 +380,7 @@ map <Leader>v "+gP
 
 
 map <Leader>t :set list <CR>
-map <Leader>nt :set list! <CR>
+map <Leader>tn :set list! <CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -398,51 +389,19 @@ map <Leader>nt :set list! <CR>
 
 
 set t_Co=256
+set background=dark
+set listchars=tab:>-,trail:- " highlight tabs and trailing spaces
 if has("gui_running")
-	"set bg=dark
-	set listchars=tab:>-,trail:- " highlight tabs and trailing spaces
 	"set list
-
-	"    colorscheme blackboard
-	"colorscheme asmanian_blood
-	"colorscheme solarized
-	"colorscheme jellybeans
-	"colorscheme twilight
 	colorscheme molokai
-	"colorscheme fu
-	"colorscheme desert
-	"colorscheme 256-jungle
-	"colorscheme asmanian2
-	"colorscheme slate
 else
-	"colorscheme desert
 	colorscheme molokai
-	"colorscheme 256-jungle
-	"colorscheme asmanian2
 endif
 
 map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; surf "file:///tmp/apercu.html" <CR>
-" Git raccourci
-map <Leader>gs :Gstatus <CR>
-map <Leader>gpu :Gpush<CR>
-map <Leader>gpl :Gpull<CR>
-:nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
 
 " vim-project
 let g:project_use_nerdtree = 1
 set rtp+=~/.vim/bundle/vim-project/
-call project#rc("/home/data/git/")
-
-Project  'bitbucket/blocnote'					, 'blocnote'	
-File     'bitbucket/blocnote/session.vim'       , 'session'
-Callback 'session'                              , 'Opensession'
-
-function! Opensession(...) abort
-  so /home/data/git/bitbucket/blocnote/session.vim
-endfunction
-
-Project  'bitbucket/doc'
-"File     'bitbucket/doc/article-site/vim.html'            , 'vim'
-
-Project  '~/.vim/'            , 'vimrc'
-
+so ~/.vim/project.vim
