@@ -47,7 +47,6 @@ set cino=g1s,h1s,f0,p0,t0,+0,(0,
 "set cino=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+0,(0,u0,w1,m1 
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                Fichier swap                                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,8 +114,15 @@ map <silent> <F4> :if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<C
 imap <silent> <F4> <ESC>:if &go=~#'m'<Bar>set go-=m<Bar>else<Bar>set go+=m<Bar>endif<CR>
 
 
+" F5
+" Sauvegarde rapide de tout les fchiers
+map <F5> :SessionSave<CR>
+imap <F5> <ESC>:SessionSave<CR>
 
-
+" F6
+" Sauvegarde rapide de tout les fchiers
+map <F6> :SessionList<CR>
+imap <F6> <ESC>:SessioniList<CR>
 
 " F11
 " " affiche/enleve le menu Nerdtree
@@ -128,10 +134,6 @@ nmap <F12> :BufExplorer<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                  Touches Leader                                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" git
-nmap <leader>gs :Gstatus<CR>
-map <Leader>gp  :Gpush<CR>
-map <Leader>gr  :Gpull<CR>
 "split
 map <Leader>sv  :vsp<CR>
 map <Leader>sh  :split<CR>
@@ -154,24 +156,18 @@ Plugin 'gmarik/Vundle.vim'
 " original repos on github
 Plugin 'Shougo/neocomplcache'
 "Plugin 'Shougo/neocomplete' " vim with lua
-
+Plugin 'vim-scripts/sessionman.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
-
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'spf13/vim-autoclose'
 let g:autoclose_vim_commentmode = 1
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-
 Plugin 'vim-scripts/a.vim'
-"Plugin 'rhysd/vim-clang-format'
-"Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'scrooloose/nerdcommenter'
-"Plugin 'tpope/vim-sensible'
 Plugin 'luochen1990/rainbow'
 Plugin 'honza/vim-snippets'
 Plugin 'othree/html5.vim'
@@ -179,7 +175,6 @@ Plugin 'klen/python-mode'
 " Permet le déplacement rapide dans le code
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'aperezdc/vim-template'
-Plugin 'amiorin/vim-project'
 
 " Themes
 Plugin 'noah/vim256-color'
@@ -400,8 +395,3 @@ endif
 
 map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; surf "file:///tmp/apercu.html" <CR>
 
-
-" vim-project
-let g:project_use_nerdtree = 1
-set rtp+=~/.vim/bundle/vim-project/
-so ~/.vim/project.vim
