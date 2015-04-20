@@ -404,6 +404,6 @@ map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown
 "make jj do esc"
 inoremap jj <esc>
 "make esc do nothing"
-inoremap <eEsc> <Nop>
+inoremap <esc> <Nop>
 vno v <esc>
 cnoremap <del> <C-c>
