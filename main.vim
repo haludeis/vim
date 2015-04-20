@@ -46,7 +46,6 @@ let &path.="src/include,"
 set cino=g1s,h1s,f0,p0,t0,+0,(0,
 "set cino=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+0,(0,u0,w1,m1 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                Fichier swap                                               "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -401,3 +400,10 @@ endif
 
 map 2h :w<CR>:!echo "<head><meta charset=\"UTF-8\">" > /tmp/apercu.html;markdown "%" >> /tmp/apercu.html ; cd ~ ; surf "file:///tmp/apercu.html" <CR>
 
+"remap mode visual and normal
+"make jj do esc"
+inoremap jj <esc>
+"make esc do nothing"
+inoremap <eEsc> <Nop>
+vno v <esc>
+cnoremap <del> <C-c>
