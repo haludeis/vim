@@ -381,6 +381,8 @@ map <Leader>v "+gP
 map <Leader>t :set list <CR>
 map <Leader>tn :set list! <CR>
 
+map <Leader>q :qa! <CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                  Themes                                                   "
