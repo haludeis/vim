@@ -1,9 +1,9 @@
 " File ~/.vim/main.vim
 " Global settings for all files (but may be overridden in ftplugin).
-let mapleader = ","
+let mapleader = ";"
 set exrc
 
-"
+
 " " Be smart when using tabs ;)
 set smarttab
 
@@ -99,7 +99,11 @@ set undofile
 " Sauvegarde rapide de tout les fchiers
 map <F2> :wa<CR>
 imap <F2> <ESC>:wa<CR>
+map <leader>fs :wa<CR>
+imap <leader>fs <ESC>:wa<CR>
 
+map <leader>fq :qa<CR>
+imap <leader>fq <ESC>:qa<CR>
 " F3
 "reindente
 imap <silent> <F3> <ESC>ggVG=<CR>
@@ -123,13 +127,19 @@ imap <F5> <ESC>:SessionSave<CR>
 map <F6> :SessionList<CR>
 imap <F6> <ESC>:SessioniList<CR>
 
+" F7
+" Sauvegarde rapide de tout les fchiers
+map <F7> :make<CR>
+imap <F7> <ESC>make<CR>
 " F11
 " " affiche/enleve le menu Nerdtree
 nnoremap <silent> <F11> :NERDTreeToggle<CR>
+map <Leader>fn :NERDTreeToggle<CR>
 
 
 " " F12
 nmap <F12> :BufExplorer<CR>
+map <Leader>fb :BufExplorer<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                  Touches Leader                                           "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -156,6 +166,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Shougo/neocomplcache'
 "Plugin 'Shougo/neocomplete' " vim with lua
 Plugin 'vim-scripts/sessionman.vim'
+Plugin 'vim-scripts/vst'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'bling/vim-airline'
@@ -171,14 +182,24 @@ Plugin 'luochen1990/rainbow'
 Plugin 'honza/vim-snippets'
 Plugin 'othree/html5.vim'
 Plugin 'klen/python-mode'
+Plugin 'Rykka/InstantRst'
+Plugin 'Rykka/riv.vim'
+"Plugin 'Rykka/rhythm.css'
 " Permet le déplacement rapide dans le code
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'aperezdc/vim-template'
+Plugin 'suan/vim-instant-markdown'
+
 
 " Themes
 Plugin 'noah/vim256-color'
 
-
+let g:riv_disable_folding=1
+let g:riv_python_rst_hl=1
+let proj1 = { 'Name': 'doc','build_path': 'build', 'path': '/home/data/git/doc',}
+let g:riv_projects = [proj1]
+let @h = "yypVr"
+let  g:instant_rst_browser='uzbl'
 " Gif config
 " EasyMotion
 "let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -245,7 +266,6 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                  Configuration Pluggins                                   "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 """Neosnippet
 " Plugin key-mappings.
@@ -407,3 +427,4 @@ inoremap jj <esc>
 inoremap <esc> <Nop>
 vno v <esc>
 cnoremap <del> <C-c>
+
